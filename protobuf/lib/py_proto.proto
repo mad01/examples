@@ -1,0 +1,35 @@
+package api;
+
+enum ErrorCodeDTO {
+    ACCOUNT_NOT_FOUND = 1;
+    ACCOUNT_EXISTS = 2;
+}
+
+message ErrorDTO {
+    required ErrorCodeDTO errorCode = 1;
+    required string errorMessage = 2;
+}
+
+message AccountDTO {
+    required string accountUid = 1;
+    required string accountName = 2;
+    optional string accountType = 3;
+    optional string password = 4;
+}
+
+message CreateAccountCommand {
+    required AccountDTO account = 1;
+}
+
+message CreateAccountDocument {
+    required AccountDTO account = 1;
+}
+
+message GetAccountCommand {
+    required string accountName = 1;
+}
+
+message GetAccountDocument {
+    required AccountDTO account = 1;
+}
+
