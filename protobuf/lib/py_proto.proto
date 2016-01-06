@@ -3,6 +3,7 @@ package api;
 enum ErrorCodeDTO {
     ACCOUNT_NOT_FOUND = 1;
     ACCOUNT_EXISTS = 2;
+    INCORRECT_CONTENT_TYPE = 3;
 }
 
 message ErrorDTO {

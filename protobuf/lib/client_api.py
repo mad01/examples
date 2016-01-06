@@ -40,5 +40,3 @@ class Client(object):
             cmd = proto.GetAccountDocument()
             cmd.ParseFromString(res.content)
             return cmd
-
-
