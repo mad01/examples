@@ -3,7 +3,7 @@ import requests
 from . import py_proto_pb2 as proto
 
 
-class api(object):
+class Client(object):
 
     def __init__(self):
         self.session = requests.Session()
@@ -40,3 +40,13 @@ class api(object):
             cmd = proto.GetAccountDocument()
             cmd.ParseFromString(res.content)
             return cmd
+
+
+class Server(object):
+
+    def __init__(self):
+        self.proto = proto
+        pass
+
+    def login(self):
+        pass
