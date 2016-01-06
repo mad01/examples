@@ -1,2 +1,3 @@
 requests
 falcon
+nose
