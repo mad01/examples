@@ -42,11 +42,3 @@ class Client(object):
             return cmd
 
 
-class Server(object):
-
-    def __init__(self):
-        self.proto = proto
-        pass
-
-    def login(self):
-        pass
