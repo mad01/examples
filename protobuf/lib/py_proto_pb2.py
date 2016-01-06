@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='lib/py_proto.proto',
   package='api',
-  serialized_pb=_b('\n\x12lib/py_proto.proto\x12\x03\x61pi\"F\n\x08\x45rrorDTO\x12$\n\terrorCode\x18\x01 \x02(\x0e\x32\x11.api.ErrorCodeDTO\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x02(\t\"\\\n\nAccountDTO\x12\x12\n\naccountUid\x18\x01 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountName\x18\x02 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountType\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\"8\n\x14\x43reateAccountCommand\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"\x17\n\x15\x43reateAccountDocument\"(\n\x11GetAccountCommand\x12\x13\n\x0b\x61\x63\x63ountName\x18\x01 \x02(\t\"6\n\x12GetAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO*9\n\x0c\x45rrorCodeDTO\x12\x15\n\x11\x41\x43\x43OUNT_NOT_FOUND\x10\x01\x12\x12\n\x0e\x41\x43\x43OUNT_EXISTS\x10\x02')
+  serialized_pb=_b('\n\x12lib/py_proto.proto\x12\x03\x61pi\"F\n\x08\x45rrorDTO\x12$\n\terrorCode\x18\x01 \x02(\x0e\x32\x11.api.ErrorCodeDTO\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x02(\t\"\\\n\nAccountDTO\x12\x12\n\naccountUid\x18\x01 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountName\x18\x02 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountType\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\"8\n\x14\x43reateAccountCommand\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"9\n\x15\x43reateAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"(\n\x11GetAccountCommand\x12\x13\n\x0b\x61\x63\x63ountName\x18\x01 \x02(\t\"6\n\x12GetAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO*U\n\x0c\x45rrorCodeDTO\x12\x15\n\x11\x41\x43\x43OUNT_NOT_FOUND\x10\x01\x12\x12\n\x0e\x41\x43\x43OUNT_EXISTS\x10\x02\x12\x1a\n\x16INCORRECT_CONTENT_TYPE\x10\x03')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -37,17 +37,22 @@ _ERRORCODEDTO = _descriptor.EnumDescriptor(
       name='ACCOUNT_EXISTS', index=1, number=2,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='INCORRECT_CONTENT_TYPE', index=2, number=3,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=374,
-  serialized_end=431,
+  serialized_start=408,
+  serialized_end=493,
 )
 _sym_db.RegisterEnumDescriptor(_ERRORCODEDTO)
 
 ErrorCodeDTO = enum_type_wrapper.EnumTypeWrapper(_ERRORCODEDTO)
 ACCOUNT_NOT_FOUND = 1
 ACCOUNT_EXISTS = 2
+INCORRECT_CONTENT_TYPE = 3
 
 
 
@@ -176,6 +181,13 @@ _CREATEACCOUNTDOCUMENT = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='account', full_name='api.CreateAccountDocument.account', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -188,7 +200,7 @@ _CREATEACCOUNTDOCUMENT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=251,
-  serialized_end=274,
+  serialized_end=308,
 )
 
 
@@ -217,8 +229,8 @@ _GETACCOUNTCOMMAND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=276,
-  serialized_end=316,
+  serialized_start=310,
+  serialized_end=350,
 )
 
 
@@ -247,12 +259,13 @@ _GETACCOUNTDOCUMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=318,
-  serialized_end=372,
+  serialized_start=352,
+  serialized_end=406,
 )
 
 _ERRORDTO.fields_by_name['errorCode'].enum_type = _ERRORCODEDTO
 _CREATEACCOUNTCOMMAND.fields_by_name['account'].message_type = _ACCOUNTDTO
+_CREATEACCOUNTDOCUMENT.fields_by_name['account'].message_type = _ACCOUNTDTO
 _GETACCOUNTDOCUMENT.fields_by_name['account'].message_type = _ACCOUNTDTO
 DESCRIPTOR.message_types_by_name['ErrorDTO'] = _ERRORDTO
 DESCRIPTOR.message_types_by_name['AccountDTO'] = _ACCOUNTDTO

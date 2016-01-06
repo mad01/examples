@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-import json
 import falcon
 from . import py_proto_pb2 as proto
 
@@ -11,10 +10,10 @@ def validate_content_type(content):
         return False
 
 
-def proto_error(errorCode='', message=''):
+def proto_error(errorType='', message=''):
     command = proto.ErrorDTO()
     command.message = message
-    command.errorCode = errorCode
+    command.errorCode = errorType
     command.SerializeToString()
     return command
 
@@ -26,22 +25,18 @@ class CreateAcount(object):
 
     def on_post(self, req, resp):
         if not validate_content_type(req.content_type):
+            errorMessage = 'content_type is: %s' % (req.content_type)
             error_data = proto_error(
-                errorCode=3,
-                message='incorrect content_type'
+                errorCode=proto.INCORRECT_CONTENT_TYPE,
+                message=errorMessage
                 )
             resp.status = falcon.HTTP_400
             resp.body = error_data
 
         try:
-            raw_json = req.stream.read()
+            req.stream.read()
         except Exception as ex:
             raise falcon.HTTPError(falcon.HTTP_400, 'HTTPError', ex.message)
-
-        try:
-            json_data = json.loads(raw_json, encoding='utf-8')
-        except ValueError:
-            raise falcon.HTTPError(falcon.HTTP_400, 'JSON was incorrect.')
 
 
 class GetAcount(object):
