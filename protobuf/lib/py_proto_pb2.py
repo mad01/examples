@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='lib/py_proto.proto',
   package='api',
-  serialized_pb=_b('\n\x12lib/py_proto.proto\x12\x03\x61pi\"F\n\x08\x45rrorDTO\x12$\n\terrorCode\x18\x01 \x02(\x0e\x32\x11.api.ErrorCodeDTO\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x02(\t\"\\\n\nAccountDTO\x12\x12\n\naccountUid\x18\x01 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountName\x18\x02 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountType\x18\x03 \x01(\t\x12\x10\n\x08password\x18\x04 \x01(\t\"8\n\x14\x43reateAccountCommand\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"9\n\x15\x43reateAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"(\n\x11GetAccountCommand\x12\x13\n\x0b\x61\x63\x63ountName\x18\x01 \x02(\t\"6\n\x12GetAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO*A\n\x0c\x45rrorCodeDTO\x12\x15\n\x11\x41\x43\x43OUNT_NOT_FOUND\x10\x01\x12\x1a\n\x16INCORRECT_CONTENT_TYPE\x10\x02')
+  serialized_pb=_b('\n\x12lib/py_proto.proto\x12\x03\x61pi\"F\n\x08\x45rrorDTO\x12$\n\terrorCode\x18\x01 \x02(\x0e\x32\x11.api.ErrorCodeDTO\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x02(\t\"\\\n\nAccountDTO\x12\x12\n\naccountUid\x18\x01 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountName\x18\x02 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountType\x18\x03 \x02(\t\x12\x10\n\x08password\x18\x04 \x02(\t\"8\n\x14\x43reateAccountCommand\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"9\n\x15\x43reateAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"(\n\x11GetAccountCommand\x12\x13\n\x0b\x61\x63\x63ountName\x18\x01 \x02(\t\"6\n\x12GetAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO*A\n\x0c\x45rrorCodeDTO\x12\x15\n\x11\x41\x43\x43OUNT_NOT_FOUND\x10\x01\x12\x1a\n\x16INCORRECT_CONTENT_TYPE\x10\x02')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -111,14 +111,14 @@ _ACCOUNTDTO = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='accountType', full_name='api.AccountDTO.accountType', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      number=3, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='password', full_name='api.AccountDTO.password', index=3,
-      number=4, type=9, cpp_type=9, label=1,
+      number=4, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

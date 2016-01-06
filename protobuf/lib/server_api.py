@@ -34,7 +34,12 @@ class CreateAcount(object):
             resp.body = data
 
         try:
-            req.stream.read()
+            command = proto.CreateAccountCommand()
+            command.ParseFromString(req.stream.read())
+            assert command.HasField('accountUid')
+            assert command.HasField('accountName')
+            assert command.HasField('accountType')
+            assert command.HasField('password')
         except Exception as ex:
             raise falcon.HTTPError(falcon.HTTP_400, 'HTTPError', ex.message)
 
