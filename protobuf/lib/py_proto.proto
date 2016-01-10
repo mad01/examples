@@ -1,0 +1,32 @@
+package api;
+
+enum ErrorCodeDTO {
+    INCORRECT_CONTENT_TYPE = 2;
+    INVALID_REQUEST = 3;
+    INVALID_MSG = 4;
+    INVALID_CHANNEL = 5;
+}
+
+enum PingIdDTO {
+    PING = 1;
+    PONG = 2;
+}
+
+message ErrorDTO {
+    required ErrorCodeDTO errorCode = 1;
+    required string errorMessage = 2;
+}
+
+message PingDTO {
+    required string msg = 1;
+    required string channel = 2;
+    required PingIdDTO pingId = 3;
+}
+
+message PingCommand {
+    required PingDTO ping = 1;
+}
+
+message PingDocument {
+    required PingDTO ping = 1;
+}
