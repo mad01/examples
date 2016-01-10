@@ -1,21 +1,6 @@
 #!/usr/bin/env python
 import unittest
-from lib import server_api
 from lib import client_api
-
-
-class TestServer(unittest.TestCase):
-
-    @classmethod
-    def setUpClass(self):
-        self.api = server_api.Server()
-        pass
-
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
 
 
 class TestClient(unittest.TestCase):
@@ -23,12 +8,6 @@ class TestClient(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         self.api = client_api.Client()
-
-    def setUp(self):
-        pass
-
-    def tearDown(self):
-        pass
 
     def test_ping(self):
         msg = 'hello'

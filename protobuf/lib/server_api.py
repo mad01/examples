@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 import falcon
 from . import py_proto_pb2 as proto
 
@@ -50,6 +50,8 @@ class Ping(object):
             assert command.ping.HasField('msg')
             assert command.ping.HasField('channel')
             assert command.ping.HasField('pingId')
+
+            print('msg: %s\nchannel: %s' % (command.ping.msg, command.ping.channel))
 
             cmd = proto.PingDocument()
             cmd.ping.msg = command.ping.msg
