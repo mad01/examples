@@ -2,7 +2,6 @@
 import unittest
 from lib import server_api
 from lib import client_api
-from lib import util
 
 
 class TestServer(unittest.TestCase):
@@ -32,18 +31,17 @@ class TestClient(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_create_account(self):
-        accountUid = util.random_hex()
-        email = util.random_email(domain='example.com')
-        res = self.api.create_account(
-            accountUid=accountUid,
-            email=email,
-            password='Qwerty123'
+    def test_ping(self):
+        msg = 'hello'
+        channel = 'foo'
+        cmd = self.api.send_ping(
+            msg=msg,
+            channel=channel,
+            pingId='PING'
             )
-        self.assertEqual(res.status_code, 200)
-
-    def test_get_account(self):
-        pass
+        self.assertEqual(cmd.ping.pingId, self.api.pingId('PONG'))
+        self.assertEqual(cmd.ping.msg, msg)
+        self.assertEqual(cmd.ping.channel, channel)
 
 if __name__ == '__main__':
     unittest.main()

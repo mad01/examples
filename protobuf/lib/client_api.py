@@ -20,36 +20,26 @@ class Client(object):
     def proto_error_name(self, number):
         return proto.ErrorCodeDTO.Name(number)
 
+    def pingId(self, ping):
+        return proto.PingIdDTO.Value(ping)
+
     def build_url(self, urn):
-        url = 'http://%s/%s' % ('127.0.0.1', urn)
+        url = 'http://%s:8000/%s' % ('127.0.0.1', urn)
         return url
 
-    def create_account(self, accountUid='', email='', password=''):
-        url = self.build_url('api/create/account')
-        command = proto.CreateAccountCommand()
-        command.account.accountUid = accountUid
-        command.account.accountName = email
-        command.account.password = password
+    def send_ping(self, msg='', channel='', pingId=''):
+        url = self.build_url('api/ping')
+        command = proto.PingCommand()
+        ping = command.ping
+        ping.msg = str(msg)
+        ping.channel = str(channel)
+        ping.pingId = self.pingId(pingId)
 
         res = self.session.post(url, data=command.SerializeToString())
-        if (res.status_code != 200):
-            print(res.text)
-            return self.proto_error_handler(res.content)
-        else:
-            cmd = proto.CreateAccountDocument()
+        if (res.status_code == 201):
+            cmd = proto.PingDocument()
             cmd.ParseFromString(res.content)
             return cmd
-
-    def get_account(self, email=''):
-        url = self.build_url('api/get/account')
-        command = proto.GetAccountCommand()
-        command.accountName = email
-
-        res = self.session.post(url, data=command.SerializeToString())
-        if (res.status_code != 200):
+        else:
             print(res.text)
             return self.proto_error_handler(res.content)
-        else:
-            cmd = proto.GetAccountDocument()
-            cmd.ParseFromString(res.content)
-            return cmd

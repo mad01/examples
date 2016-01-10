@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='lib/py_proto.proto',
   package='api',
-  serialized_pb=_b('\n\x12lib/py_proto.proto\x12\x03\x61pi\"F\n\x08\x45rrorDTO\x12$\n\terrorCode\x18\x01 \x02(\x0e\x32\x11.api.ErrorCodeDTO\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x02(\t\"G\n\nAccountDTO\x12\x12\n\naccountUid\x18\x01 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountName\x18\x02 \x02(\t\x12\x10\n\x08password\x18\x04 \x02(\t\"8\n\x14\x43reateAccountCommand\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"9\n\x15\x43reateAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"(\n\x11GetAccountCommand\x12\x13\n\x0b\x61\x63\x63ountName\x18\x01 \x02(\t\"6\n\x12GetAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO*V\n\x0c\x45rrorCodeDTO\x12\x15\n\x11\x41\x43\x43OUNT_NOT_FOUND\x10\x01\x12\x1a\n\x16INCORRECT_CONTENT_TYPE\x10\x02\x12\x13\n\x0fINVALID_REQUEST\x10\x03')
+  serialized_pb=_b('\n\x12lib/py_proto.proto\x12\x03\x61pi\"F\n\x08\x45rrorDTO\x12$\n\terrorCode\x18\x01 \x02(\x0e\x32\x11.api.ErrorCodeDTO\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x02(\t\"G\n\x07PingDTO\x12\x0b\n\x03msg\x18\x01 \x02(\t\x12\x0f\n\x07\x63hannel\x18\x02 \x02(\t\x12\x1e\n\x06pingId\x18\x03 \x02(\x0e\x32\x0e.api.PingIdDTO\")\n\x0bPingCommand\x12\x1a\n\x04ping\x18\x01 \x02(\x0b\x32\x0c.api.PingDTO\"*\n\x0cPingDocument\x12\x1a\n\x04ping\x18\x01 \x02(\x0b\x32\x0c.api.PingDTO*e\n\x0c\x45rrorCodeDTO\x12\x1a\n\x16INCORRECT_CONTENT_TYPE\x10\x02\x12\x13\n\x0fINVALID_REQUEST\x10\x03\x12\x0f\n\x0bINVALID_MSG\x10\x04\x12\x13\n\x0fINVALID_CHANNEL\x10\x05*\x1f\n\tPingIdDTO\x12\x08\n\x04PING\x10\x01\x12\x08\n\x04PONG\x10\x02')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -30,29 +30,59 @@ _ERRORCODEDTO = _descriptor.EnumDescriptor(
   file=DESCRIPTOR,
   values=[
     _descriptor.EnumValueDescriptor(
-      name='ACCOUNT_NOT_FOUND', index=0, number=1,
+      name='INCORRECT_CONTENT_TYPE', index=0, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='INCORRECT_CONTENT_TYPE', index=1, number=2,
+      name='INVALID_REQUEST', index=1, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='INVALID_REQUEST', index=2, number=3,
+      name='INVALID_MSG', index=2, number=4,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='INVALID_CHANNEL', index=3, number=5,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=387,
-  serialized_end=473,
+  serialized_start=259,
+  serialized_end=360,
 )
 _sym_db.RegisterEnumDescriptor(_ERRORCODEDTO)
 
 ErrorCodeDTO = enum_type_wrapper.EnumTypeWrapper(_ERRORCODEDTO)
-ACCOUNT_NOT_FOUND = 1
+_PINGIDDTO = _descriptor.EnumDescriptor(
+  name='PingIdDTO',
+  full_name='api.PingIdDTO',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='PING', index=0, number=1,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='PONG', index=1, number=2,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=362,
+  serialized_end=393,
+)
+_sym_db.RegisterEnumDescriptor(_PINGIDDTO)
+
+PingIdDTO = enum_type_wrapper.EnumTypeWrapper(_PINGIDDTO)
 INCORRECT_CONTENT_TYPE = 2
 INVALID_REQUEST = 3
+INVALID_MSG = 4
+INVALID_CHANNEL = 5
+PING = 1
+PONG = 2
 
 
 
@@ -66,7 +96,7 @@ _ERRORDTO = _descriptor.Descriptor(
     _descriptor.FieldDescriptor(
       name='errorCode', full_name='api.ErrorDTO.errorCode', index=0,
       number=1, type=14, cpp_type=8, label=2,
-      has_default_value=False, default_value=1,
+      has_default_value=False, default_value=2,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -93,31 +123,31 @@ _ERRORDTO = _descriptor.Descriptor(
 )
 
 
-_ACCOUNTDTO = _descriptor.Descriptor(
-  name='AccountDTO',
-  full_name='api.AccountDTO',
+_PINGDTO = _descriptor.Descriptor(
+  name='PingDTO',
+  full_name='api.PingDTO',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='accountUid', full_name='api.AccountDTO.accountUid', index=0,
+      name='msg', full_name='api.PingDTO.msg', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='accountName', full_name='api.AccountDTO.accountName', index=1,
+      name='channel', full_name='api.PingDTO.channel', index=1,
       number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='password', full_name='api.AccountDTO.password', index=2,
-      number=4, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='pingId', full_name='api.PingDTO.pingId', index=2,
+      number=3, type=14, cpp_type=8, label=2,
+      has_default_value=False, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -137,15 +167,15 @@ _ACCOUNTDTO = _descriptor.Descriptor(
 )
 
 
-_CREATEACCOUNTCOMMAND = _descriptor.Descriptor(
-  name='CreateAccountCommand',
-  full_name='api.CreateAccountCommand',
+_PINGCOMMAND = _descriptor.Descriptor(
+  name='PingCommand',
+  full_name='api.PingCommand',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='account', full_name='api.CreateAccountCommand.account', index=0,
+      name='ping', full_name='api.PingCommand.ping', index=0,
       number=1, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -163,19 +193,19 @@ _CREATEACCOUNTCOMMAND = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=172,
-  serialized_end=228,
+  serialized_end=213,
 )
 
 
-_CREATEACCOUNTDOCUMENT = _descriptor.Descriptor(
-  name='CreateAccountDocument',
-  full_name='api.CreateAccountDocument',
+_PINGDOCUMENT = _descriptor.Descriptor(
+  name='PingDocument',
+  full_name='api.PingDocument',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='account', full_name='api.CreateAccountDocument.account', index=0,
+      name='ping', full_name='api.PingDocument.ping', index=0,
       number=1, type=11, cpp_type=10, label=2,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -192,81 +222,20 @@ _CREATEACCOUNTDOCUMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=230,
-  serialized_end=287,
-)
-
-
-_GETACCOUNTCOMMAND = _descriptor.Descriptor(
-  name='GetAccountCommand',
-  full_name='api.GetAccountCommand',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='accountName', full_name='api.GetAccountCommand.accountName', index=0,
-      number=1, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=289,
-  serialized_end=329,
-)
-
-
-_GETACCOUNTDOCUMENT = _descriptor.Descriptor(
-  name='GetAccountDocument',
-  full_name='api.GetAccountDocument',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='account', full_name='api.GetAccountDocument.account', index=0,
-      number=1, type=11, cpp_type=10, label=2,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=331,
-  serialized_end=385,
+  serialized_start=215,
+  serialized_end=257,
 )
 
 _ERRORDTO.fields_by_name['errorCode'].enum_type = _ERRORCODEDTO
-_CREATEACCOUNTCOMMAND.fields_by_name['account'].message_type = _ACCOUNTDTO
-_CREATEACCOUNTDOCUMENT.fields_by_name['account'].message_type = _ACCOUNTDTO
-_GETACCOUNTDOCUMENT.fields_by_name['account'].message_type = _ACCOUNTDTO
+_PINGDTO.fields_by_name['pingId'].enum_type = _PINGIDDTO
+_PINGCOMMAND.fields_by_name['ping'].message_type = _PINGDTO
+_PINGDOCUMENT.fields_by_name['ping'].message_type = _PINGDTO
 DESCRIPTOR.message_types_by_name['ErrorDTO'] = _ERRORDTO
-DESCRIPTOR.message_types_by_name['AccountDTO'] = _ACCOUNTDTO
-DESCRIPTOR.message_types_by_name['CreateAccountCommand'] = _CREATEACCOUNTCOMMAND
-DESCRIPTOR.message_types_by_name['CreateAccountDocument'] = _CREATEACCOUNTDOCUMENT
-DESCRIPTOR.message_types_by_name['GetAccountCommand'] = _GETACCOUNTCOMMAND
-DESCRIPTOR.message_types_by_name['GetAccountDocument'] = _GETACCOUNTDOCUMENT
+DESCRIPTOR.message_types_by_name['PingDTO'] = _PINGDTO
+DESCRIPTOR.message_types_by_name['PingCommand'] = _PINGCOMMAND
+DESCRIPTOR.message_types_by_name['PingDocument'] = _PINGDOCUMENT
 DESCRIPTOR.enum_types_by_name['ErrorCodeDTO'] = _ERRORCODEDTO
+DESCRIPTOR.enum_types_by_name['PingIdDTO'] = _PINGIDDTO
 
 ErrorDTO = _reflection.GeneratedProtocolMessageType('ErrorDTO', (_message.Message,), dict(
   DESCRIPTOR = _ERRORDTO,
@@ -275,40 +244,26 @@ ErrorDTO = _reflection.GeneratedProtocolMessageType('ErrorDTO', (_message.Messag
   ))
 _sym_db.RegisterMessage(ErrorDTO)
 
-AccountDTO = _reflection.GeneratedProtocolMessageType('AccountDTO', (_message.Message,), dict(
-  DESCRIPTOR = _ACCOUNTDTO,
+PingDTO = _reflection.GeneratedProtocolMessageType('PingDTO', (_message.Message,), dict(
+  DESCRIPTOR = _PINGDTO,
   __module__ = 'lib.py_proto_pb2'
-  # @@protoc_insertion_point(class_scope:api.AccountDTO)
+  # @@protoc_insertion_point(class_scope:api.PingDTO)
   ))
-_sym_db.RegisterMessage(AccountDTO)
+_sym_db.RegisterMessage(PingDTO)
 
-CreateAccountCommand = _reflection.GeneratedProtocolMessageType('CreateAccountCommand', (_message.Message,), dict(
-  DESCRIPTOR = _CREATEACCOUNTCOMMAND,
+PingCommand = _reflection.GeneratedProtocolMessageType('PingCommand', (_message.Message,), dict(
+  DESCRIPTOR = _PINGCOMMAND,
   __module__ = 'lib.py_proto_pb2'
-  # @@protoc_insertion_point(class_scope:api.CreateAccountCommand)
+  # @@protoc_insertion_point(class_scope:api.PingCommand)
   ))
-_sym_db.RegisterMessage(CreateAccountCommand)
+_sym_db.RegisterMessage(PingCommand)
 
-CreateAccountDocument = _reflection.GeneratedProtocolMessageType('CreateAccountDocument', (_message.Message,), dict(
-  DESCRIPTOR = _CREATEACCOUNTDOCUMENT,
+PingDocument = _reflection.GeneratedProtocolMessageType('PingDocument', (_message.Message,), dict(
+  DESCRIPTOR = _PINGDOCUMENT,
   __module__ = 'lib.py_proto_pb2'
-  # @@protoc_insertion_point(class_scope:api.CreateAccountDocument)
+  # @@protoc_insertion_point(class_scope:api.PingDocument)
   ))
-_sym_db.RegisterMessage(CreateAccountDocument)
-
-GetAccountCommand = _reflection.GeneratedProtocolMessageType('GetAccountCommand', (_message.Message,), dict(
-  DESCRIPTOR = _GETACCOUNTCOMMAND,
-  __module__ = 'lib.py_proto_pb2'
-  # @@protoc_insertion_point(class_scope:api.GetAccountCommand)
-  ))
-_sym_db.RegisterMessage(GetAccountCommand)
-
-GetAccountDocument = _reflection.GeneratedProtocolMessageType('GetAccountDocument', (_message.Message,), dict(
-  DESCRIPTOR = _GETACCOUNTDOCUMENT,
-  __module__ = 'lib.py_proto_pb2'
-  # @@protoc_insertion_point(class_scope:api.GetAccountDocument)
-  ))
-_sym_db.RegisterMessage(GetAccountDocument)
+_sym_db.RegisterMessage(PingDocument)
 
 
 # @@protoc_insertion_point(module_scope)
