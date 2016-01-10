@@ -23,7 +23,6 @@ class TestClient(unittest.TestCase):
     @classmethod
     def setUpClass(self):
         self.api = client_api.Client()
-        pass
 
     def setUp(self):
         pass

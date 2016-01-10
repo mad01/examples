@@ -30,10 +30,9 @@ class Client(object):
     def send_ping(self, msg='', channel='', pingId=''):
         url = self.build_url('api/ping')
         command = proto.PingCommand()
-        ping = command.ping
-        ping.msg = str(msg)
-        ping.channel = str(channel)
-        ping.pingId = self.pingId(pingId)
+        command.ping.msg = str(msg)
+        command.ping.channel = str(channel)
+        command.ping.pingId = self.pingId(pingId)
 
         res = self.session.post(url, data=command.SerializeToString())
         if (res.status_code == 201):

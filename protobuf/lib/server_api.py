@@ -52,20 +52,18 @@ class Ping(object):
             assert command.ping.HasField('pingId')
 
             cmd = proto.PingDocument()
-            ping = cmd.ping
-            ping.msg = command.ping.msg
-            ping.channel = command.ping.channel
-            ping.pingId = proto.PONG
+            cmd.ping.msg = command.ping.msg
+            cmd.ping.channel = command.ping.channel
+            cmd.ping.pingId = proto.PONG
 
             resp.content_type = proto_http_type()
             resp.status = falcon.HTTP_201
             resp.data = cmd.SerializeToString()
 
-        except AssertionError as e:
-            errorMessage = 'AssertionError: %s' % (e.message)
+        except (AssertionError, ValueError, KeyError) as e:
             data = proto_error(
                 errorCode=proto.INVALID_REQUEST,
-                message=errorMessage
+                message=e.message
                 )
             resp.content_type = proto_http_type()
             resp.status = falcon.HTTP_400
