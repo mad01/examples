@@ -10,9 +10,10 @@ def call(msg='', channel=''):
         channel=channel,
         pingId='PING'
         )
-    cmd.ping.pingId
-    cmd.ping.msg
-    cmd.ping.channel
+
+    print('Response: %s' % api.pingId(cmd.ping.pingId))
+    print('message sent: %s' % cmd.ping.msg)
+    print('to channel: %s' % cmd.ping.channel)
 
 
 def main():

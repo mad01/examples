@@ -51,7 +51,8 @@ class Ping(object):
             assert command.ping.HasField('channel')
             assert command.ping.HasField('pingId')
 
-            print('msg: %s\nchannel: %s' % (command.ping.msg, command.ping.channel))
+            print('msg: %s' % command.ping.msg)
+            print('channel: %s' % command.ping.channel)
 
             cmd = proto.PingDocument()
             cmd.ping.msg = command.ping.msg
