@@ -51,10 +51,6 @@ class Ping(object):
             assert command.ping.HasField('channel')
             assert command.ping.HasField('pingId')
 
-            print(command.ping.msg)
-            print(command.ping.channel)
-            print(command.ping.pingId)
-
             cmd = proto.PingDocument()
             ping = cmd.ping
             ping.msg = command.ping.msg
