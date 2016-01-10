@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='lib/py_proto.proto',
   package='api',
-  serialized_pb=_b('\n\x12lib/py_proto.proto\x12\x03\x61pi\"F\n\x08\x45rrorDTO\x12$\n\terrorCode\x18\x01 \x02(\x0e\x32\x11.api.ErrorCodeDTO\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x02(\t\"\\\n\nAccountDTO\x12\x12\n\naccountUid\x18\x01 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountName\x18\x02 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountType\x18\x03 \x02(\t\x12\x10\n\x08password\x18\x04 \x02(\t\"8\n\x14\x43reateAccountCommand\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"9\n\x15\x43reateAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"(\n\x11GetAccountCommand\x12\x13\n\x0b\x61\x63\x63ountName\x18\x01 \x02(\t\"6\n\x12GetAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO*V\n\x0c\x45rrorCodeDTO\x12\x15\n\x11\x41\x43\x43OUNT_NOT_FOUND\x10\x01\x12\x1a\n\x16INCORRECT_CONTENT_TYPE\x10\x02\x12\x13\n\x0fINVALID_REQUEST\x10\x03')
+  serialized_pb=_b('\n\x12lib/py_proto.proto\x12\x03\x61pi\"F\n\x08\x45rrorDTO\x12$\n\terrorCode\x18\x01 \x02(\x0e\x32\x11.api.ErrorCodeDTO\x12\x14\n\x0c\x65rrorMessage\x18\x02 \x02(\t\"G\n\nAccountDTO\x12\x12\n\naccountUid\x18\x01 \x02(\t\x12\x13\n\x0b\x61\x63\x63ountName\x18\x02 \x02(\t\x12\x10\n\x08password\x18\x04 \x02(\t\"8\n\x14\x43reateAccountCommand\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"9\n\x15\x43reateAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO\"(\n\x11GetAccountCommand\x12\x13\n\x0b\x61\x63\x63ountName\x18\x01 \x02(\t\"6\n\x12GetAccountDocument\x12 \n\x07\x61\x63\x63ount\x18\x01 \x02(\x0b\x32\x0f.api.AccountDTO*V\n\x0c\x45rrorCodeDTO\x12\x15\n\x11\x41\x43\x43OUNT_NOT_FOUND\x10\x01\x12\x1a\n\x16INCORRECT_CONTENT_TYPE\x10\x02\x12\x13\n\x0fINVALID_REQUEST\x10\x03')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -44,8 +44,8 @@ _ERRORCODEDTO = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=408,
-  serialized_end=494,
+  serialized_start=387,
+  serialized_end=473,
 )
 _sym_db.RegisterEnumDescriptor(_ERRORCODEDTO)
 
@@ -115,14 +115,7 @@ _ACCOUNTDTO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='accountType', full_name='api.AccountDTO.accountType', index=2,
-      number=3, type=9, cpp_type=9, label=2,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='password', full_name='api.AccountDTO.password', index=3,
+      name='password', full_name='api.AccountDTO.password', index=2,
       number=4, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -140,7 +133,7 @@ _ACCOUNTDTO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=99,
-  serialized_end=191,
+  serialized_end=170,
 )
 
 
@@ -169,8 +162,8 @@ _CREATEACCOUNTCOMMAND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=193,
-  serialized_end=249,
+  serialized_start=172,
+  serialized_end=228,
 )
 
 
@@ -199,8 +192,8 @@ _CREATEACCOUNTDOCUMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=251,
-  serialized_end=308,
+  serialized_start=230,
+  serialized_end=287,
 )
 
 
@@ -229,8 +222,8 @@ _GETACCOUNTCOMMAND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=310,
-  serialized_end=350,
+  serialized_start=289,
+  serialized_end=329,
 )
 
 
@@ -259,8 +252,8 @@ _GETACCOUNTDOCUMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=352,
-  serialized_end=406,
+  serialized_start=331,
+  serialized_end=385,
 )
 
 _ERRORDTO.fields_by_name['errorCode'].enum_type = _ERRORCODEDTO
