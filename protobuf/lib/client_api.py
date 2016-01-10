@@ -20,17 +20,30 @@ class Client(object):
     def proto_error_name(self, number):
         return proto.ErrorCodeDTO.Name(number)
 
-    def build_url(urn):
+    def build_url(self, urn):
         url = 'http://%s/%s' % ('127.0.0.1', urn)
         return url
 
-    def get_account(self, accountUid='', email='', password=''):
-        url = self.build_url('api/login')
+    def create_account(self, accountUid='', email='', password=''):
+        url = self.build_url('api/create/account')
+        command = proto.CreateAccountCommand()
+        command.account.accountUid = accountUid
+        command.account.accountName = email
+        command.account.password = password
+
+        res = self.session.post(url, data=command.SerializeToString())
+        if (res.status_code != 200):
+            print(res.text)
+            return self.proto_error_handler(res.content)
+        else:
+            cmd = proto.CreateAccountDocument()
+            cmd.ParseFromString(res.content)
+            return cmd
+
+    def get_account(self, email=''):
+        url = self.build_url('api/get/account')
         command = proto.GetAccountCommand()
-        command.accountUid = accountUid
         command.accountName = email
-        command.accountEmail = email
-        command.password = password
 
         res = self.session.post(url, data=command.SerializeToString())
         if (res.status_code != 200):

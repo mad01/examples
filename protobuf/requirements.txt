@@ -1,3 +1,4 @@
 requests
 falcon
 nose
+protobuf==3.0.0a3 # https://github.com/tgalal/yowsup/issues/871

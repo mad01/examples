@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 import unittest
-from lib import api
+from lib import server_api
+from lib import client_api
+from lib import util
 
 
 class TestServer(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.api = api.Server()
+        self.api = server_api.Server()
         pass
 
     def setUp(self):
@@ -15,19 +17,13 @@ class TestServer(unittest.TestCase):
 
     def tearDown(self):
         pass
-
-    def test_example_exept_broken(self):
-        self.assertTrue(False)
-
-    def test_example_exept_working(self):
-        self.assertFalse(False)
 
 
 class TestClient(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
-        self.api = api.Client()
+        self.api = client_api.Client()
         pass
 
     def setUp(self):
@@ -36,11 +32,18 @@ class TestClient(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_example_exept_broken(self):
-        self.assertTrue(False)
+    def test_create_account(self):
+        accountUid = util.random_hex()
+        email = util.random_email(domain='example.com')
+        res = self.api.create_account(
+            accountUid=accountUid,
+            email=email,
+            password='Qwerty123'
+            )
+        self.assertEqual(res.status_code, 200)
 
-    def test_example_exept_working(self):
-        self.assertFalse(False)
+    def test_get_account(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()

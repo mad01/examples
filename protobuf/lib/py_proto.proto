@@ -14,7 +14,6 @@ message ErrorDTO {
 message AccountDTO {
     required string accountUid = 1;
     required string accountName = 2;
-    required string accountType = 3;
     required string password = 4;
 }
 

@@ -36,10 +36,9 @@ class CreateAcount(object):
         try:
             command = proto.CreateAccountCommand()
             command.ParseFromString(req.stream.read())
-            assert command.HasField('accountUid')
-            assert command.HasField('accountName')
-            assert command.HasField('accountType')
-            assert command.HasField('password')
+            assert command.account.HasField('accountUid')
+            assert command.account.HasField('accountName')
+            assert command.account.HasField('password')
 
             cmd = proto.CreateAccountDocument()
             cmd.account = command
