@@ -11,7 +11,7 @@ def call(msg='', channel=''):
         pingId='PING'
         )
 
-    print('Response: %s' % api.pingId(cmd.ping.pingId))
+    print('Response: %s' % cmd.ping.pingId)
     print('message sent: %s' % cmd.ping.msg)
     print('to channel: %s' % cmd.ping.channel)
 
