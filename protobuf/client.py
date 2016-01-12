@@ -5,6 +5,7 @@ from lib.shared import ProtoShared
 
 
 def call(msg='', channel=''):
+    shared = ProtoShared()
     api = client_api.Client()
     cmd = api.send_ping(
         msg=msg,
@@ -12,7 +13,7 @@ def call(msg='', channel=''):
         pingId='PING'
         )
 
-    print('Response: %s' % ProtoShared.pingValue(cmd.ping.pingId))
+    print('Response: %s' % shared.pingName(cmd.ping.pingId))
     print('message sent: %s' % cmd.ping.msg)
     print('to channel: %s' % cmd.ping.channel)
 
