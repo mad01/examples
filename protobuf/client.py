@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 from lib import client_api
+from lib.shared import ProtoShared
 
 
 def call(msg='', channel=''):
@@ -11,7 +12,7 @@ def call(msg='', channel=''):
         pingId='PING'
         )
 
-    print('Response: %s' % cmd.ping.pingId)
+    print('Response: %s' % ProtoShared.pingValue(cmd.ping.pingId))
     print('message sent: %s' % cmd.ping.msg)
     print('to channel: %s' % cmd.ping.channel)
 

@@ -1,27 +1,18 @@
 #!/usr/bin/env python3
 import requests
 from . import py_proto_pb2 as proto
+from .shared import ProtoShared
 
 
 class Client(object):
 
     def __init__(self):
+        self.shared = ProtoShared()
         self.session = requests.Session()
         self.session.headers.update({
             "Content-Type": "application/x-protobuf",
             "Accept": "application/x-protobuf"
         })
-
-    def proto_error_handler(self, resp):
-        command = proto.ErrorDTO()
-        command.ParseFromString(resp)
-        return command
-
-    def proto_error_name(self, number):
-        return proto.ErrorCodeDTO.Name(number)
-
-    def pingId(self, ping):
-        return proto.PingIdDTO.Value(ping)
 
     def build_url(self, urn):
         url = 'http://%s:8000/%s' % ('127.0.0.1', urn)
@@ -32,7 +23,7 @@ class Client(object):
         command = proto.PingCommand()
         command.ping.msg = str(msg)
         command.ping.channel = str(channel)
-        command.ping.pingId = self.pingId(pingId)
+        command.ping.pingId = self.shared.pingValue(pingId)
 
         res = self.session.post(url, data=command.SerializeToString())
         if (res.status_code == 201):

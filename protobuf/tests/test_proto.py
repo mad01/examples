@@ -1,12 +1,14 @@
 #!/usr/bin/env python
 import unittest
 from lib import client_api
+from lib.shared import ProtoShared
 
 
 class TestClient(unittest.TestCase):
 
     @classmethod
     def setUpClass(self):
+        self.shared = ProtoShared()
         self.api = client_api.Client()
 
     def test_ping(self):
@@ -17,7 +19,7 @@ class TestClient(unittest.TestCase):
             channel=channel,
             pingId='PING'
             )
-        self.assertEqual(cmd.ping.pingId, self.api.pingId('PONG'))
+        self.assertEqual(cmd.ping.pingId, self.shared.pingValue('PONG'))
         self.assertEqual(cmd.ping.msg, msg)
         self.assertEqual(cmd.ping.channel, channel)
 
