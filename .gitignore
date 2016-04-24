@@ -1,1 +1,4 @@
 *.pyc
+build
+ecli_nested.egg-info
+ecli.egg-info
