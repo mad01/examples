@@ -5,6 +5,9 @@ ADD id_rsa_docker.pub /root/.ssh/id_rsa.pub
 RUN echo "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 RUN chown -R root:root /root/.ssh
 
+RUN git config --global user.name "Jenkins"
+RUN git config --global user.email jenkins@example.com
+
 WORKDIR /app/test
 RUN git clone git@github.com:mad01/examples.git
 
