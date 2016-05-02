@@ -25,7 +25,7 @@ class install(_install):
 
 setup(
     name='example',
-    version='0.1.2',
+    version='0.1.3',
     author=u'example',
     author_email='foo@example.com',
     description='Some description',
