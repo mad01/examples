@@ -7,6 +7,7 @@ RUN chown -R root:root /root/.ssh
 
 RUN git config --global user.name "Jenkins"
 RUN git config --global user.email jenkins@example.com
+RUN git config --global push.default simple 
 
 WORKDIR /app/test
 RUN git clone git@github.com:mad01/examples.git
