@@ -8,5 +8,5 @@ RUN chown -R root:root /root/.ssh
 WORKDIR /app/test
 RUN git clone git@github.com:mad01/examples.git
 
-WORKDIR /app/test/examples/docker/ppython
+WORKDIR /app/test/examples/docker/python
 RUN pip install -r requirements.txt
