@@ -1,6 +1,7 @@
 version: '2'
 services:
   tester:
+    container_name: tester
     build:
       context: .
     command: /bin/bash -c "make release-patch"
