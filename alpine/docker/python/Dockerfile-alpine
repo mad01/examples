@@ -1,0 +1,18 @@
+FROM python:3.5-alpine
+
+# adding code
+WORKDIR /app/pikachu
+ADD requirements.txt /app/pikachu
+
+# install
+RUN apk add --update openssl \
+    && apk --update add --no-cache --virtual build-dependencies libc-dev autoconf gcc \
+    && pip install --no-cache-dir -r requirements.txt \
+    \ 
+    && rm -rf ~/.cache \
+    && apk del build-dependencies
+
+ADD . /app/pikachu
+
+EXPOSE 8080
+ENTRYPOINT gunicorn --bind 0.0.0.0:8080 pikachu.app:api
