@@ -34,21 +34,7 @@ class Collector(object):
         return metrics
 
     def collect(self):
-        time_start = time.time()
         metrics = self._get_metrics()
-        time_stop = time.time()
-
-        scrape_duration_seconds = (time_stop - time_start)
-        time_labels = {}
-        time_labels.update(self._labels)
-
-        time_metric = Metric('scrape_duration', 'service metric', 'gauge')
-        time_metric.add_sample(
-            'scrape_duration_seconds',
-            value=scrape_duration_seconds,
-            labels=time_labels
-            )
-        yield time_metric
 
         if metrics:
             for k, v in metrics.items():
